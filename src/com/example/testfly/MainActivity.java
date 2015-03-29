@@ -3,6 +3,7 @@ package com.example.testfly;
 import java.util.ArrayList;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -19,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.os.Build;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
 	private ViewPager mViewPager;
 	private PagerTitleStrip mPagerTitleStrip;
@@ -28,7 +29,14 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
+       
+       /* 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new PlaceholderFragment())
+                    .commit();
+        }   */
         mViewPager=(ViewPager)findViewById(R.id.viewpager);
         mPagerTitleStrip=(PagerTitleStrip)findViewById(R.id.pagertitle);
         LinearLayout.LayoutParams mParams=new LinearLayout.LayoutParams(
@@ -72,12 +80,6 @@ public class MainActivity extends ActionBarActivity {
 			}
 		};
 		mViewPager.setAdapter(mPagerAdapter);
-        
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
     }
 
 
@@ -109,12 +111,18 @@ public class MainActivity extends ActionBarActivity {
         public PlaceholderFragment() {
         }
 
+        
+  /* try new road 	
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            //undo
+            
+            
+            
             return rootView;
-        }
+        }   */
     }
 
 }
